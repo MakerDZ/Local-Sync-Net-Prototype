@@ -1,0 +1,18 @@
+version: '3'
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.core
+    ports:
+      - 4001:4001
+    depends_on:
+      - storage
+    restart: always
+  storage:
+    build:
+      context: .
+      dockerfile: Dockerfile.storage
+    ports:
+      - 27017:27017
+    restart: always
